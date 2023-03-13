@@ -8,6 +8,10 @@
 
 using namespace std;
 
+
+vector<int> value;
+vector<int> value1 = {100, 2000, 5000, 7000, 10000, 15000, 20000, 40000, 50000, 100000};
+vector<int> v;
 vector<int> indexes;
 
 vector<int> vvod_0(vector<int>& var, int n)
@@ -24,7 +28,7 @@ vector<int> massive (vector<int>& var, int n)
 {
     for (int i = 0; i < n; ++i)
     {
-        var.push_back(i);
+        var.push_back(abs(::rand()));
     }
     return var;
 }
@@ -52,10 +56,10 @@ vector<int> Mass ( vector<int>& var, int start, int end, int step)
 }
 
 //Бинарный поиск
-int Bin_Search(vector<int>& var, int val)
+int Bin_Search(vector<int>& var, int n, int val)
 {
     int l = 0, r;
-    r = var.size() - 1;
+    r = n - 1;
 
     while (r > l)
     {
@@ -73,9 +77,9 @@ int Bin_Search(vector<int>& var, int val)
 }
 
 //Линейный поиск
-int search (vector<int>& var, int val)
+int search (vector<int>& var, int n, int val)
 {
-    for (int i = 0; i < var.size() ; ++i){
+    for (int i = 0; i < n; ++i){
         if (var[i] == val)
             return i;
     }
@@ -99,17 +103,17 @@ void OUT (string file, int n, long double t){
     out.close();
 }
 
-int search_sum(vector<int>& var, int n){
+int search_sum(vector<int>& var, int n, int size){
     for (int i = 0; i < var.size(); ++i) {
-        if (search(var, n-i) >=0 and search(var, n-i) !=0)
-            return (i, search(var, n-i));
+        if (search(var, size, n-i) >=0 and search(var, size, n-i) !=0)
+            return (i, search(var, size, n-i));
     }
     return -1;
 }
 
-int Bin_search_sum(vector<int>& var, int n){
+int Bin_search_sum(vector<int>& var, int n, int size){
     int lt = 0; // первый, то есть левый
-    int rt = var.size() - 1; // второй, то есть правый
+    int rt = size - 1; // второй, то есть правый
     while (lt != rt)
     {
         int cursum = var[lt] + var[rt];
@@ -125,38 +129,53 @@ int Bin_search_sum(vector<int>& var, int n){
     return -1;
 }
 
-int swap_A(int number, vector<int>& mass) {
-
-    int res = search(mass, number);
-    if (res != -1) {
-        int tmp = mass[0];
-        mass[0] = mass[res];
-        mass[res] = tmp;
-    }
-    return res;
-}
-
-int swap_B(int number, vector<int>& mass){
-    int res = search(mass, number);
-    if(res>1){
-        int tmp = mass[res-1];
-        mass[res-1] = mass[res];
-        mass[res] = tmp;
-    }
-    return res;
-}
-
-int swap_C(int number, vector<int>& mass){
-    int res = search(mass, number);
-    if(res>-1){
-        indexes[res]++;
-        if(res>0){
-            if(indexes[res] > indexes[res - 1]){
-                (mass[res], mass[res - 1]) = (mass[res - 1], mass[res]);
-                (indexes[res], indexes[res - 1]) = (indexes[res - 1], indexes[res]);
-            }
+int swap_A(vector<int>& var, int size, int el){
+    int tmp = 0;
+    for (int i = 0; i < size; ++i) {
+        if (var[i] == el){
+            tmp = var[0];
+            var[0] = var[i];
+            var[i] = tmp;
+            return i;
         }
     }
-    return res;
+    return -1;
 }
+
+int swap_B(vector<int>& var, int size, int el){
+    int tmp = 0;
+    for (int i = 0; i < size; ++i) {
+        if (var[i] == el){
+            if (i>0) {
+                tmp = var[i];
+                var[i] = var[i - 1];
+                var[i - 1] = tmp;
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
+int swap_C(vector<int>& var, int size, int el){
+    int ind[size];
+    for (int i = 0; i < size; ++i){
+        ind[i] = 0;
+    }
+
+    for (int i = 0; i < size; ++i) {
+        if (var[i] == el){
+            int tmp = 0;
+            ++ind[i];
+            if (i>0 and ind[i]>ind[i-1]) {
+                tmp = var[i];
+                var[i] = var[i - 1];
+                var[i - 1] = tmp;
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
 
