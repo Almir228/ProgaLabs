@@ -1,0 +1,3 @@
+/Users/almairo/CLionProjects/Grid/cmake-build-debug/CMakeFiles/untitled1.dir
+/Users/almairo/CLionProjects/Grid/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/almairo/CLionProjects/Grid/cmake-build-debug/CMakeFiles/rebuild_cache.dir
