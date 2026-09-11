@@ -1,0 +1,14 @@
+
+# Generated build and IDE files
+build/
+cmake-build-*/
+.idea/
+.vscode/
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+.env
+.env.*
+!.env.example
