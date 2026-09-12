@@ -1,31 +1,31 @@
-# Programming coursework
+# Практикум по программированию
 
-MIPT programming exercises in **Python and C++**: working with tabular data, measuring algorithm performance, implementing data structures and exploring simple physical models. These are educational projects with different levels of completion.
+Учебные задания МФТИ на **Python и C++**: работа с таблицами, измерение производительности алгоритмов, реализация структур данных и простых физических моделей. Проекты находятся на разных стадиях готовности.
 
-## Start here: data and analysis
+## С чего начать: данные и анализ
 
-- [Algorithm measurements](lab1/Обработка/graphic.ipynb): pandas reads recorded CSV measurements; SciPy fits logarithmic/linear models; matplotlib compares timing observations and fitted curves. [Written discussion](lab1/Обработка/Обработка.md).
-- [Student-data exercises](Programing/bonus_task/bonus_task.ipynb): combine ten groups of tables by record index, inspect missingness, compare descriptive summaries and compute pass/grade categories. The local CSVs contain demographic categories and scores, without names or contact fields; the original data source/licence is not documented here.
-- [Sorting measurements](lab2/approx.py): NumPy fits slopes in log-log coordinates using supplied timing data. This analysis can be run independently of the incomplete C++ sources.
+- [Замеры алгоритмов](lab1/Обработка/graphic.ipynb): чтение CSV через pandas, подбор логарифмических и линейных моделей через SciPy, сравнение измерений времени и аппроксимаций через matplotlib. [Обсуждение результатов](lab1/Обработка/Обработка.md).
+- [Задания с данными учащихся](Programing/bonus_task/bonus_task.ipynb): объединение десяти групп таблиц по индексу записи, проверка пропусков, сравнение описательных статистик и вычисление оценок и зачётов. Локальные CSV содержат демографические категории и результаты, без имён и контактов; исходный источник и лицензия данных не указаны.
+- [Замеры сортировок](lab2/approx.py): оценка наклонов в логарифмических координатах через NumPy по готовым замерам. Анализ запускается независимо от незавершённого кода C++.
 
-These examples demonstrate coursework, not commercial product analytics or causal effects. Some older notebooks are partial solutions; see limitations below.
+Это учебные примеры, а не коммерческая продуктовая аналитика или оценка причинных эффектов. Часть старых ноутбуков содержит неполные решения.
 
-## Projects
+## Проекты
 
-| Directory | Task, language and methods |
+| Каталог | Задача, язык и методы |
 |---|---|
-| [Grid](Grid) | C++: 2D and recursive N-dimensional grid containers; indexing, dynamic memory and copy/move semantics. Existing class documentation is kept. |
-| [Skiplist](Skiplist) | C++: probabilistic multi-level ordered list with insertion, lookup, iterators and range operations. Existing API notes are kept. |
-| [Programing](Programing) | Python: pandas exercises, NumPy/matplotlib/seaborn plotting, turtle/pygame graphics and a solar-system exercise using pairwise gravitational forces and explicit time stepping. The solar-system README describes joint coursework; no sole-authorship claim is made. |
-| [lab1](lab1) | C++ search/pair-sum exercises and Python/Jupyter analysis of timing measurements; linear and binary search, alternative search strategies and curve fitting. |
-| [lab2](lab2) | C++ shaker, comb and Shell-sort experiments; Python plots and log-log fits for measurement CSVs. The included C++ files refer to a missing `Function.h`. |
-| [lab3](lab3) | C++ linked list and dynamic-array exercises with Python graphs; compares allocation/growth strategies and their cost. |
+| [Grid](Grid) | C++: двумерные и рекурсивные N-мерные контейнеры, индексация, динамическая память, копирование и перемещение. Сохранена документация классов. |
+| [Skiplist](Skiplist) | C++: вероятностный многоуровневый упорядоченный список, вставка, поиск, итераторы и операции над диапазонами. Сохранено описание интерфейса. |
+| [Programing](Programing) | Python: задания pandas, графики NumPy/matplotlib/seaborn, графика turtle/pygame и модель Солнечной системы с попарным тяготением и явными шагами по времени. README модели указывает на совместную учебную работу; единоличное авторство не заявляется. |
+| [lab1](lab1) | C++: поиск и поиск пары с заданной суммой; Python/Jupyter: анализ замеров времени, линейный и бинарный поиск, альтернативные стратегии и аппроксимация. |
+| [lab2](lab2) | Эксперименты с шейкерной сортировкой, сортировками расчёской и Шелла на C++; графики и аппроксимация в логарифмических координатах на Python. В C++ есть ссылка на отсутствующий `Function.h`. |
+| [lab3](lab3) | Связные списки и динамические массивы на C++, графики на Python: сравнение стратегий выделения и увеличения памяти. |
 
-Names such as `Programing` and `Libaries/Lincked_list` are retained because existing paths and includes use them. The separate [lab3 repository](https://github.com/Almir228/lab3) is a related version with differences in `task2.3.cpp` and an additional test program.
+Написания `Programing` и `Libaries/Lincked_list` сохранены, поскольку используются в путях и подключениях. Отдельный [репозиторий lab3](https://github.com/Almir228/lab3) содержит близкую версию с отличиями в `task2.3.cpp` и дополнительной тестовой программой.
 
-## Run the analysis
+## Запуск анализа
 
-Python 3.10+ is a practical starting point. From the repository root:
+Рекомендуемая отправная точка — Python 3.10+. Из корня репозитория:
 
 ```bash
 python3 -m venv .venv
@@ -34,19 +34,19 @@ python -m pip install -r requirements.txt
 jupyter lab
 ```
 
-Open notebooks in their own directories so their adjacent `data/` or `Data/` paths resolve. Run `lab2/approx.py` from any working directory; it resolves data relative to its own file. Recorded CSVs and PDF results are preserved.
+Открывайте ноутбуки в их каталогах, чтобы соседние пути `data/` и `Data/` разрешались корректно. `lab2/approx.py` можно запускать из любого рабочего каталога: данные ищутся относительно самого файла. Исходные замеры CSV и результаты PDF сохранены.
 
-`requirements.txt` covers tabular analysis and plots. Interactive graphics additionally require `pygame`; `solar_system` imports `thorpy` with an older API that has not been validated against current releases. Turtle requires a Python installation with Tk support. There is no single command that runs every coursework project.
+`requirements.txt` покрывает табличный анализ и графики. Для интерактивной графики дополнительно нужен `pygame`; `solar_system` использует старый интерфейс `thorpy`, совместимость с современными версиями не проверена. Turtle требует Python с поддержкой Tk. Единой команды для запуска всех заданий нет.
 
-C++ projects `Grid` and `Skiplist` each have a CMake file requiring CMake 3.26+ and C++23; for example `cmake -S Grid -B build/Grid` then `cmake --build build/Grid`. These commands describe the supplied build setup, not a guarantee that every exercise is complete.
+Для `Grid` и `Skiplist` предусмотрены отдельные конфигурации CMake 3.26+ и C++23. Например: `cmake -S Grid -B build/Grid`, затем `cmake --build build/Grid`. Эти команды описывают существующую сборку, а не гарантируют завершённость каждого задания.
 
-## Known limitations
+## Известные ограничения
 
-- `Programing/control task/control_task.ipynb` includes incomplete assignment cells and depends on an external spreadsheet. It is kept as coursework, not recommended as the first code example.
-- `bonus_task` contains partial answers. Portability, table alignment and several directly verifiable summary/grade errors have been corrected; this is not a full regrading of the assignment.
-- `lab2` cannot be built as supplied because `Function.h` is missing; the recorded data and analysis remain usable.
-- The Grid, Skiplist and lab3 CMake targets build with the checked local Apple Clang setup; lab3 still emits warnings about variable-length arrays. Several C++ exercises require a separate correctness review. Historical complexity discussion in `lab3` is informal and should not substitute for a proof.
-- GUI exercises need a desktop environment. The solar-system model has simplified dynamics and collision handling.
-- No product impact, A/B-test or machine-learning results are claimed by these projects.
+- `Programing/control task/control_task.ipynb` содержит незавершённые ячейки и зависит от внешней таблицы. Сохранён как учебная работа; для первого знакомства лучше выбрать другой пример.
+- В `bonus_task` есть частичные ответы. Исправлены переносимость, согласование таблиц и несколько проверяемых ошибок в сводках и оценках; полная перепроверка задания не проводилась.
+- `lab2` не собирается без отсутствующего `Function.h`; готовые данные и анализ доступны.
+- Цели Grid, Skiplist и lab3 собираются в проверенной локальной среде Apple Clang. В lab3 остаются предупреждения о массивах переменной длины. Корректность ряда упражнений C++ требует отдельной проверки. Старое обсуждение сложности в `lab3` не заменяет доказательство.
+- Графическим заданиям нужна среда с рабочим столом. В модели Солнечной системы упрощены динамика и столкновения.
+- Эти проекты не заявляют продуктового эффекта, результатов A/B-тестов или машинного обучения.
 
-Generated build/IDE files and Python bytecode are excluded from Git; educational data, figures, source files and reports are retained.
+Файлы сборки, настройки IDE и байткод Python исключены из Git; учебные данные, рисунки, исходники и отчёты сохранены.
